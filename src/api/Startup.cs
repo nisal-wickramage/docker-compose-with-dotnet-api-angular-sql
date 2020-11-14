@@ -37,7 +37,7 @@ namespace api
 
             services.AddTransient<Repository>();
             services.AddDbContext<ProductDbContext>(options =>
-                options.UseInMemoryDatabase(databaseName: "Products"));
+                options.UseSqlServer(Configuration.GetConnectionString("ProductContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
