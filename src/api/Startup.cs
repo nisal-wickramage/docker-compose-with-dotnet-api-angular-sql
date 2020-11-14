@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using dataaccess;
+using Microsoft.EntityFrameworkCore;
 
 namespace api
 {
@@ -32,6 +34,10 @@ namespace api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "api", Version = "v1" });
             });
+
+            services.AddTransient<Repository>();
+            services.AddDbContext<ProductDbContext>(options =>
+                options.UseInMemoryDatabase(databaseName: "Products"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
