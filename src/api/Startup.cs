@@ -48,7 +48,7 @@ namespace api
 
             services.AddTransient<Repository>();
             services.AddDbContext<ProductDbContext>(options =>
-                options.UseSqlServer(
+                options.UseNpgsql(
                     Configuration.GetConnectionString("ProductContext"),
                     b => b.MigrationsAssembly("dataaccess")));
         }

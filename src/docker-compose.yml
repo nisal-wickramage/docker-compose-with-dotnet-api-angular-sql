@@ -9,9 +9,10 @@ services:
     ports:
       - "4200:80"
   sqlserver:
-    image: mcr.microsoft.com/mssql/server:2019-latest
+    image: postgres:latest
     ports:
-      - "1433:1433"
+      - "5432:5432"
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=1qaz2wsx@
+      - POSTGRES_USER=SA
+      - POSTGRES_PASSWORD=1qaz2wsx@
